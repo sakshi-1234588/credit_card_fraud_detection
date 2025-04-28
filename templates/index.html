@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Transaction Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function showAlert(message) {
+            alert(message);
+        }
+    </script>
+</head>
+<body>
+    <h2 style="text-align:center;">Credit Card Transaction Checker</h2>
+    <form action="/predict" method="post">
+        <label for="Time">Transaction Time:</label>
+        <input type="text" name="Time" required>
+
+        <label for="Amount">Transaction Amount:</label>
+        <input type="text" name="Amount" required>
+
+        <label for="V1">Feature V1:</label>
+        <input type="text" name="V1" required>
+
+        <label for="V2">Feature V2:</label>
+        <input type="text" name="V2" required>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <script>
+            showAlert("{{ prediction_text }}");
+        </script>
+    {% endif %}
+</body>
+</html>
